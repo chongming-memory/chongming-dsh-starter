@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Starter logo">
+  <rect width="128" height="128" rx="28" fill="#2563eb"/>
+  <path d="M34 72c0-25 18-43 43-43 10 0 19 3 26 9-7-2-15-1-23 3-14 7-22 20-22 35v12h25c-8 8-19 13-32 13-12 0-23-5-31-13 9 3 19 1 28-4V72H34Z" fill="white" opacity="0.96"/>
+  <circle cx="82" cy="52" r="5" fill="#dbeafe"/>
+</svg>
