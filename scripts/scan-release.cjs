@@ -10,6 +10,7 @@ const secretText = /(sk-[A-Za-z0-9_-]{20,}|DEEPSEEK_API_KEY:\s*['"]?[A-Za-z0-9_-
 
 function walk(dir) {
   for (const name of fs.readdirSync(dir)) {
+    if (name === '.git') continue;
     const p = path.join(dir, name);
     const rel = path.relative(root, p);
     const st = fs.lstatSync(p);
@@ -31,5 +32,6 @@ if (!fs.existsSync(root)) {
 walk(root);
 console.log(JSON.stringify({ root, status: problems.length ? 'FAIL' : 'PASS', problems }, null, 2));
 process.exit(problems.length ? 1 : 0);
+
 
 
