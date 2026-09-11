@@ -13,6 +13,7 @@ This repository is the open-source shell. It does not include Chongming hosted m
 - Local-only startup by default.
 - Templates for model relay settings and DSH profile configuration.
 - Optional Hub client configuration through an explicit environment file.
+- Replaceable branding through `branding/default` and `scripts/apply-brand.cjs`.
 - Release scanning rules to catch credentials, runtime state, and private data before publishing.
 
 ## What it does not provide
@@ -46,6 +47,18 @@ node scripts/scan-release.cjs output\Chongming-DSH-Starter-local
 ```
 
 The build script copies the source distribution, removes runtime/user data, applies public templates, and writes a release manifest. It is intentionally conservative: anything that looks like sessions, credentials, device tokens, logs, local databases, or private runtime state is excluded.
+
+## Custom branding
+
+Teams can replace the starter brand with their own name, logo, headline, and shortcut icon.
+
+```powershell
+Copy-Item branding\default branding\acme -Recurse
+# edit branding\acme\brand.json and replace logo.svg / icon.ico
+node scripts/apply-brand.cjs --release output\Chongming-DSH-Starter-local --brand branding\acme
+```
+
+Brand assets are your responsibility. Do not reuse the Chongming bird, Lanwei marks, or any third-party trademark unless you have permission.
 
 ## Optional Hub integration
 
