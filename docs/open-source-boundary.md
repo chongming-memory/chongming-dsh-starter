@@ -9,6 +9,7 @@ Keep these parts open:
 - Credential-free startup flow.
 - Local runtime safety rules.
 - Documentation for optional service integration.
+- A replaceable branding template so teams can use their own logo and name.
 
 Keep these parts out of this repository:
 
@@ -16,6 +17,7 @@ Keep these parts out of this repository:
 - `.dshcfg`, sessions, attachments, storages, profiles, logs, and local databases.
 - Employee names, open IDs, role maps, OAuth secrets, and device tokens.
 - Private Hub server code and production endpoints.
+- Brand assets you do not own or cannot sublicense.
 - Chongming hosted-memory implementation details that belong to the commercial service.
 - Reliability knowledge cards, sales-coach private knowledge, customer records, or internal playbooks.
 
