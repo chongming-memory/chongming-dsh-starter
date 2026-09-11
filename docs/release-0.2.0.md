@@ -21,3 +21,8 @@ v0.1.0 只有源码模板，未满足普通用户下载即启动的目标。v0.2
 ## 验证限制
 
 测试使用本机 Windows、隔离的新数据目录和打包 Node；没有全新 Windows 虚拟机。未使用真实模型 Key，未验证真实付费模型响应质量。默认模型可用性取决于用户账号。本包不含重明商业能力。
+
+## Windows 长路径修复
+
+最终打包改用长路径模式遍历并核对 23,550 个文件，显式检查 OpenTelemetry 的 machine-id/getMachineId.js，避免普通目录遍历漏掉深层依赖。包内顶层目录为 ChongmingDSH；推荐用户解压到 C:\AI 等短路径。打包脚本见 scripts/package-portable.py。
+
