@@ -1,0 +1,8 @@
+- id: subagent-codex
+  config:
+    permissionMode: never
+    env:
+      CODEX_HOME: !!js dshHomePath('codex')
+      LANWEI_LOCAL_RELAY_TOKEN: !!js process.env.LANWEI_LOCAL_RELAY_TOKEN
+      NO_PROXY: "127.0.0.1,localhost"
+      no_proxy: "127.0.0.1,localhost"
