@@ -1,17 +1,9 @@
-# Branding
+# 自定义品牌
 
-This directory contains a safe, replaceable example brand for Chongming DSH Starter.
+完整运行包：编辑 branding/brand.json，替换 branding/logo.svg，停止服务后双击 apply-brand.cmd，重启并 Ctrl+F5。
 
-To make your own branded starter:
+支持 name、wordmark、headline、logo。SVG 必须自包含，无脚本或外链。脚本固定支持随本版提供的 DSH bundle；上游版本变化需要重新适配。
 
-1. Copy `branding/default` to a new folder, for example `branding/acme`.
-2. Replace `logo.svg` with your own SVG.
-3. Optionally add `icon.ico` for Windows shortcuts.
-4. Edit `brand.json`.
-5. Apply it to a built release:
+开发者命令：node scripts/apply-brand.cjs --release <完整包目录> --brand <品牌目录>
 
-```powershell
-node scripts/apply-brand.cjs --release output\Chongming-DSH-Starter-local --brand branding\acme
-```
-
-Do not reuse someone else's trademark, company logo, or private brand assets unless you have permission.
+支持页面图标、文字标、标题和标语；不提供 Windows 快捷方式图标定制。使用第三方品牌需自行取得许可。

@@ -1,75 +1,47 @@
 # Chongming DSH Starter
 
-Chongming DSH Starter is an open packaging template for building a clean, self-hosted DeepSeek Harness desktop starter.
+Windows 本地 AI 工作助手便携版：解压，双击 start.cmd，配置自己的 DeepSeek API Key 后使用。内含 DSH、Node 和 Codex 运行组件，无需单独安装 Node。
 
-The goal is simple: a seed user can download a release, start it locally, enter their own model API key, choose a workspace, and try DSH / Codex-style local agent workflows without receiving any built-in company key or private data.
+## 普通用户下载
 
-This repository is the open-source shell. It does not include Chongming hosted memory, Lanwei private knowledge bases, sales-coach content, employee role maps, customer data, or private Hub server configuration.
+**下载 [最新 Release](https://github.com/chongming-memory/chongming-dsh-starter/releases/latest) 中名称含 win-x64.zip 的完整运行包。**
 
-## What this starter provides
+旧 v0.1.0 的 16.9 KB ZIP 是开发者模板，不能直接运行。GitHub 自动生成的 Source code ZIP 也不包含运行环境。
 
-- A repeatable packaging layout for a local DSH distribution.
-- No built-in model API keys.
-- Local-only startup by default.
-- Templates for model relay settings and DSH profile configuration.
-- Optional Hub client configuration through an explicit environment file.
-- Replaceable branding through `branding/default` and `scripts/apply-brand.cjs`.
-- Release scanning rules to catch credentials, runtime state, and private data before publishing.
+适用 Windows 10/11 x64（Intel/AMD）。解压到可写目录后：
 
-## What it does not provide
+1. 双击 start.cmd，浏览器打开本地页面。
+2. 在首次配置页填写自己的 DeepSeek API Key。
+3. 选择测试工作目录，开始一个小任务。
+4. 双击 stop.cmd 停止；下次启动保留设置。
 
-- Chongming hosted organization memory.
-- Sales execution coach knowledge or workflows.
-- Reliability/private enterprise knowledge bases.
-- A production Hub server.
-- Employee identity, role-map, or OAuth secrets.
-- A vendored DSH upstream distribution in source control.
+详见 [使用说明](docs/portable-quickstart.zh-CN.md)。默认模型需你的账号支持；如调整模型，Codex 本地转换服务的模型配置也需相应调整。模型费用由你自己的 API 账号承担。
 
-## Quick start for users
+## 交付范围
 
-1. Download a release archive.
-2. Extract it into a writable local directory.
-3. Run `start.cmd`.
-4. Open the local URL shown in the terminal.
-5. Enter your own model API key in settings.
-6. Choose a local workspace and run a small task.
-7. Run `stop.cmd` when finished.
+- 内置本地运行环境，无内置模型 Key。
+- Codex 子代理通过本地协议转换使用用户自己的模型凭据。
+- 可替换 SVG 图标、名称、标语和页面标题。
+- 无公司 Hub、重明托管服务、私有知识库或客户数据。
 
-The open-source starter is useful without Chongming hosted services. Hosted organization memory and sales-coach workflows are optional commercial integrations.
+这是独立社区打包版，不是 DeepSeek 或 OpenAI 官方发行版。当前验收包括隔离数据目录下的启动、停止、重启、浏览器配置页，以及本地模拟模型的 Codex 协议测试；不宣称已在全新 Windows 虚拟机或全部真实模型上完成验证。
 
-## Build from an existing DSH distribution
+## 换成团队自己的品牌
 
-This repository does not commit a full DSH runtime or `node_modules`. To build a starter release from an already installed distribution:
+完整运行包中编辑 branding/brand.json 和 branding/logo.svg，关闭服务后双击 apply-brand.cmd，再重启并 Ctrl+F5。支持 name、wordmark、headline、logo；不提供 Windows 安装器或快捷方式图标定制。
+
+## 开发者构建
+
+仓库保存打包代码、启动器、说明和许可证，不提交运行依赖。
 
 ```powershell
-node scripts/build-starter.cjs --source C:\path\to\existing-dsh --name Chongming-DSH-Starter-local
-node scripts/scan-release.cjs output\Chongming-DSH-Starter-local
+node scripts/build-portable.cjs C:\path\to\tested-portable-baseline
 ```
 
-The build script copies the source distribution, removes runtime/user data, applies public templates, and writes a release manifest. It is intentionally conservative: anything that looks like sessions, credentials, device tokens, logs, local databases, or private runtime state is excluded.
+该构建器要求已有包含 DSH、Node、Codex 和 codex-proxy 的完整便携基线，不能把任意 DSH 安装目录当成输入。它是基于现有发行包的净化构建，尚不是从上游源码完全复现的构建。
 
-## Custom branding
+发布前必须检查 [发布验收](docs/release-0.2.0.md)。用户运行后的 .dshcfg 不得再打包。
 
-Teams can replace the starter brand with their own name, logo, headline, and shortcut icon.
+## 许可证
 
-```powershell
-Copy-Item branding\default branding\acme -Recurse
-# edit branding\acme\brand.json and replace logo.svg / icon.ico
-node scripts/apply-brand.cjs --release output\Chongming-DSH-Starter-local --brand branding\acme
-```
-
-Brand assets are your responsibility. Do not reuse the Chongming bird, Lanwei marks, or any third-party trademark unless you have permission.
-
-## Optional Hub integration
-
-Hub integration is disabled by default. To point a private build at your own Hub, copy:
-
-```text
-templates/hub/hub-base.env.example -> hub/hub-base.env
-```
-
-Then set `DSH_HUB_BASE` to your own endpoint. Do not publish builds that point to a private production Hub unless that is the explicit release goal.
-
-## Open-source boundary
-
-Code in this repository is Apache-2.0 unless noted otherwise. Third-party packages keep their own licenses. Brand assets are not automatically granted under Apache-2.0; replace them for your own distribution unless the asset license permits reuse.
+本项目代码采用 Apache-2.0，完整文本见 LICENSE。DSH、Codex、Node 及其他依赖保留各自许可证；第三方声明见 third-party 和运行包内的 THIRD-PARTY-PACKAGES.json。默认通用 SVG 随本项目许可提供，不代表授予蓝威或其他企业商标使用权。

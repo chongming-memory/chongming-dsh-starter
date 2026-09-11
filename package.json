@@ -1,13 +1,13 @@
 {
   "name": "chongming-dsh-starter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "license": "Apache-2.0",
   "description": "Open packaging template for a clean DeepSeek Harness starter distribution.",
   "scripts": {
     "scan": "node scripts/scan-release.cjs",
-    "build": "node scripts/build-starter.cjs",
-    "verify": "node scripts/verify-archive.cjs",
+    "build": "node scripts/build-portable.cjs",
+    "verify": "node scripts/test-portable.cjs",
     "brand": "node scripts/apply-brand.cjs"
   },
   "repository": {

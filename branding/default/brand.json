@@ -1,8 +1,7 @@
 {
   "name": "Chongming DSH Starter",
   "wordmark": "Chongming",
-  "headline": "Bring your own model key. Start local agent work.",
+  "headline": "配置自己的模型，开始工作",
   "accentColor": "#2563eb",
-  "logo": "logo.svg",
-  "icon": "icon.ico"
+  "logo": "logo.svg"
 }
