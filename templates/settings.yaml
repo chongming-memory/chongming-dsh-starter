@@ -1,0 +1,5 @@
+agent-default-model:
+  provider: deepseek-official
+  model: deepseek-v4-pro
+agent-presets:
+  default: standard-codex
