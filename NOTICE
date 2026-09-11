@@ -1,0 +1,7 @@
+# NOTICE
+
+Chongming DSH Starter is a packaging template around upstream open-source components. It does not include Chongming hosted memory, Lanwei private knowledge bases, sales-coach content, customer data, employee role maps, or private Hub server configuration.
+
+Upstream packages keep their own licenses and notices, including DeepSeek Harness packages and OpenAI Codex CLI. A built release should include third-party license information from the packages it bundles.
+
+The Chongming bird / Lanwei brand assets are not granted under Apache-2.0 unless a specific asset license says otherwise. Replace them when building your own distribution.
